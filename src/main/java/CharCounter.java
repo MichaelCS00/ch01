@@ -1,15 +1,20 @@
+import lombok.extern.slf4j.Slf4j;
 import java.io.*;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 /**
- * 统计每种字符
+ * @Classname Test
+ * @Description 统计全文每种字符的数量
+ * @Date 7/16/2019 3:41 PM
+ * @Created by MichaelCS
  */
+@Slf4j
 public class CharCounter extends Counter{
+
     // 用于记录统计结果
     Map<Character,Integer> resultMap = new HashMap<Character, Integer>();
-    public void countFrequency(File file){
+    public void countChar(File file){
         generateResultMap(file);
         displayResult();
     }
@@ -32,15 +37,6 @@ public class CharCounter extends Counter{
                 // 去除串中的空白部分
                 lineString = lineString.trim();
                 char[] characters = lineString.toCharArray();
-//                for (int i = 0; i < characters.length; i++) {
-//                    // 如果map中已有该词则将出现频次+1
-//                    if (resultMap.containsKey(str[i])) {
-//                        resultMap.put(str[i], resultMap.get(str[i]) + 1);
-//                    } else {
-//                        // 第一次出现则将单词出现频次设为1加入map
-//                        resultMap.put(str[i], 1);
-//                    }
-//                }
                 for(char currChar : characters){
                     if(resultMap.containsKey(currChar)){
                         // 如果当前字符在map中则频次+1
@@ -61,8 +57,8 @@ public class CharCounter extends Counter{
     public void displayResult(){
         Iterator<Map.Entry<Character, Integer>> ite = resultMap.entrySet().iterator();
         while(ite.hasNext()) {
-            Map.Entry<Character, Integer> maps = ite.next();
-            System.out.println("word: "+maps.getKey() + "\t" +"frequency: " + maps.getValue());
+            Map.Entry<Character, Integer> map = ite.next();
+            log.info(String.format("word: %s \t frequency: %s",map.getKey(),map.getValue()));
         }
     }
 }

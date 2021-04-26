@@ -11,7 +11,7 @@
         <junit.version>4.12</junit.version>
         <mysql.version>8.0.15</mysql.version>
         <spring.jdbc.version>5.1.5.RELEASE</spring.jdbc.version>
-        <commonio.version>2.6</commonio.version>
+        <commonio.version>2.7</commonio.version>
         <log4j.version>1.7.21</log4j.version>
         <lombok.version>1.16.20</lombok.version>
     </properties>
